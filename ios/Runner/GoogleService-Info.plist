@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>358990322527-da576kukrv41nneqvkrv9sfdqigjjv9c.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.358990322527-da576kukrv41nneqvkrv9sfdqigjjv9c</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>358990322527-741n3sf23ln0mkjf5vglcst9ef011mcc.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCCLFlJr5aQ9Rl6_rgTKgbp7l_pQldCkG8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>358990322527</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.iqneting.places-app</string>
+	<key>PROJECT_ID</key>
+	<string>tta-app-2c708</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tta-app-2c708.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:358990322527:ios:a5575828b64b609861b4ea</string>
+</dict>
+</plist>
