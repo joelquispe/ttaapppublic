@@ -71,7 +71,7 @@ class _MenuBarState extends State<MenuBar> {
                     _buidIsUsuarioNormal()?
                         ListTile(
                           leading: const Icon(FontAwesomeIcons.carAlt, size: 20),
-                          title: Text("Vehiculos"),
+                          title: Text("Vehículos"),
                           onTap: () {
                             Navigator.pushNamed(context, listaVehiculosRoute,arguments: ListaVehiculosArgs(preferences.email, true));
                           }
@@ -81,7 +81,7 @@ class _MenuBarState extends State<MenuBar> {
                     :Container(child: null,),
                     ListTile(
                       leading: const Icon(Icons.pages, size: 20),
-                      title: Text("Terminos y condiciones"),
+                      title: Text("Términos y condiciones"),
                       onTap: () => {
                         Navigator.pushNamed(context, terminosCondicionesRoute)
                       },

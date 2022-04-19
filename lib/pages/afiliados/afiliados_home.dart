@@ -159,6 +159,10 @@ class _AfiliadosHomeState extends State<AfiliadosHome> {
             children: [
               _rating2(afiliado.rating, afiliado.total),
               _row(
+                Icon(Icons.book, color: kBaseColor),
+                afiliado.descripcion,
+              ),
+              _row(
                 Icon(Icons.store, color: kBaseColor),
                 afiliado.nombre,
               ),
@@ -166,6 +170,7 @@ class _AfiliadosHomeState extends State<AfiliadosHome> {
                 Icon(Icons.phone, color: kBaseColor),
                 afiliado.telefono,
               ),
+              
               _row(
                 Icon(Icons.place, color: kBaseColor),
                 afiliado.ubicacion,

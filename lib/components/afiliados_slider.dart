@@ -68,26 +68,28 @@ class _AfiliadosCarouselState extends State<AfiliadosCarousel> {
         child: Text("Aún no se han registrado afiliados en esta categoría"),
       );
     }
-    return CarouselSlider(
-      items: afiliados.map((a) {
-        return Builder(
-          builder: (BuildContext context) {
-            return _containerAfiliado(context, a);
-          },
-        );
-      }).toList(),
-      options: CarouselOptions(
-        aspectRatio: 16 / 9,
-        viewportFraction: 0.8,
-        initialPage: 0,
-        enableInfiniteScroll: true,
-        reverse: false,
-        autoPlay: false,
-        autoPlayInterval: Duration(seconds: 3),
-        autoPlayAnimationDuration: Duration(milliseconds: 800),
-        autoPlayCurve: Curves.fastOutSlowIn,
-        enlargeCenterPage: false,
-        scrollDirection: Axis.horizontal,
+    return SingleChildScrollView(
+          child: CarouselSlider(
+        items: afiliados.map((a) {
+          return Builder(
+            builder: (BuildContext context) {
+              return _containerAfiliado(context, a);
+            },
+          );
+        }).toList(),
+        options: CarouselOptions(
+          aspectRatio: 16 / 9,
+          viewportFraction: 0.8,
+          initialPage: 0,
+          enableInfiniteScroll: true,
+          reverse: false,
+          autoPlay: false,
+          autoPlayInterval: Duration(seconds: 3),
+          autoPlayAnimationDuration: Duration(milliseconds: 800),
+          autoPlayCurve: Curves.fastOutSlowIn,
+          enlargeCenterPage: false,
+          scrollDirection: Axis.horizontal,
+        ),
       ),
     );
   }

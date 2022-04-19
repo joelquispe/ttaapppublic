@@ -41,6 +41,7 @@ class _RegistroAfiliacionState extends State<RegistroAfiliacion> {
   TextEditingController telefonoCtrl = new TextEditingController();
   TextEditingController ubicacionCtrl = new TextEditingController();
   TextEditingController rfcCtrl = new TextEditingController();
+  TextEditingController _descripcioncontroller = new TextEditingController();
   FirebaseDB db = FirebaseDB();
   List<PickedFile> fotos = [];
   double latitud = 0.0;
@@ -78,7 +79,7 @@ class _RegistroAfiliacionState extends State<RegistroAfiliacion> {
       child: Scaffold(
         body: BlurContainer(
           isLoading: isSaving,
-          text: "Registrando afiliación, espere un momento",
+          text: "Registrando proveedor, espere un momento",
           children: [
             _formContainer(),
           ],
@@ -123,7 +124,7 @@ class _RegistroAfiliacionState extends State<RegistroAfiliacion> {
                     ),
                     SizedBox(height: 10.0),
                     Text(
-                      "Registro de afiliación",
+                      "Registro de proveedor",
                       style: TextStyle(
                         color: Colors.black87,
                         fontSize: 20.0,
@@ -190,6 +191,16 @@ class _RegistroAfiliacionState extends State<RegistroAfiliacion> {
                 _fotosContainer(),
                 SizedBox(
                   height: 20.0,
+                ),
+                TextFormField(
+                  maxLines: 5,
+                  controller: _descripcioncontroller,
+                  
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Describe los servicios que ofreces',
+                    alignLabelWithHint:true, 
+                  ),
                 ),
               ],
             ),
@@ -311,6 +322,7 @@ class _RegistroAfiliacionState extends State<RegistroAfiliacion> {
         user: preferences.email,
         ubicacion: ubicacionCtrl.text,
         aprobado: false,
+        descripcion: _descripcioncontroller.text,
       );
       print(afiliado.toJson());
       print(afiliado);

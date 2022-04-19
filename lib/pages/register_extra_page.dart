@@ -38,11 +38,15 @@ class _RegisterExtraPageState extends State<RegisterExtraPage> {
   TextEditingController _fechaVencimientoPolizaController = TextEditingController();
   TextEditingController _vencimientoVerificacioController = TextEditingController();
   TextEditingController _fechaPagoTenenciaController = TextEditingController();
+  TextEditingController _ultimaFechaDeServicioController = TextEditingController();
+  TextEditingController _vencimientoTarjetaCirculacionController = TextEditingController();
   //Datetimes
   DateTime _dateLicencia;
   DateTime _dateSeguro;
   DateTime _datePagoTendencia;
   DateTime _dateVencimientoVerificacion;
+  DateTime _dateVencimientoTarjetaCirculacion;
+  DateTime _dateUltimoDiaServicio;
   //Otros
   //bool isAfiliado = false;
   bool isSubmitting = false;
@@ -59,7 +63,9 @@ class _RegisterExtraPageState extends State<RegisterExtraPage> {
     placa: '', 
     seguro: '', 
     telefonoSeguro: '', 
-    vencimientoVerificacio: ''
+    vencimientoVerificacio: '',
+    ultimaFechaDeServicio:'',
+    vencimientoTarjetaCirculacion:''
   );
   String idVehiculo;
   Future<QuerySnapshot> futureVehiculo;
@@ -124,6 +130,8 @@ class _RegisterExtraPageState extends State<RegisterExtraPage> {
             _fechaVencimientoLicenciaController.text = vehiculoModel.fechaVencimientoLicencia;
             _vencimientoVerificacioController.text = vehiculoModel.vencimientoVerificacio;
             _fechaPagoTenenciaController.text = vehiculoModel.fechaPagoTenencia;
+            _ultimaFechaDeServicioController.text = vehiculoModel.ultimaFechaDeServicio;
+            _vencimientoTarjetaCirculacionController.text = vehiculoModel.vencimientoTarjetaCirculacion;
           }
           return formulario();
         } else {
@@ -155,11 +163,15 @@ class _RegisterExtraPageState extends State<RegisterExtraPage> {
           campoTexto(_numeroPolizaSeguroController, TextInputType.datetime, "Número", "Número póliza de seguro", 'Número es requerido',true),
           campoTexto(_fechaVencimientoPolizaController, TextInputType.datetime, "Ingrese la vigencia de su póliza de seguro", "Fecha vencimiento póliza de seguro", 'Ingrese la vigencia de su póliza de seguro', false),
           botonCalendario("Seleccione la fecha de vencimiento",_dateSeguro ,vehiculoModel.fechaVencimientoPoliza,_fechaVencimientoPolizaController),
+          campoTexto(_ultimaFechaDeServicioController, TextInputType.datetime, "Ingrese la fecha de ultimo servicio", "Fecha de ultimo servicio", 'Ingrese la fecha de ultimo servicio', false),
+          botonCalendario("Seleccione la ultima fecha",_dateUltimoDiaServicio ,vehiculoModel.ultimaFechaDeServicio,_ultimaFechaDeServicioController),
           campoTexto(_licenciaController, TextInputType.text, "Número", "Número licencia", 'Número es requerido', true),
           campoTexto(_fechaVencimientoLicenciaController, TextInputType.text, "Vigencia de tu licencia", "Fecha vencimiento licencia", 'Ingrese la vigencia de su licencia', false),
           botonCalendario('Seleccione la fecha de vencimiento', _dateLicencia, vehiculoModel.fechaVencimientoLicencia, _fechaVencimientoLicenciaController),
           campoTexto(_vencimientoVerificacioController, TextInputType.text, "Introduce vencimiento de verificación", "Fecha vencimiento verificación", 'Ingrese la vigencia de su licencia', false),
           botonCalendario('Seleccione la fecha de vencimiento', _dateVencimientoVerificacion, vehiculoModel.vencimientoVerificacio, _vencimientoVerificacioController),
+          campoTexto(_vencimientoTarjetaCirculacionController, TextInputType.text, "Introduce fecha de venc de tarjeta de circ.", "Fecha vencimiento de tarjeta de circ.", 'Introduce fecha de venc de tarjeta de circ.', false),
+          botonCalendario('Seleccione la fecha de vencimiento', _dateVencimientoTarjetaCirculacion, vehiculoModel.vencimientoTarjetaCirculacion, _vencimientoTarjetaCirculacionController),
           campoTexto(_fechaPagoTenenciaController, TextInputType.datetime, "Ingrese fecha pago tenencia", "Fecha pago tenencia", 'Ingrese fecha pago tenencia', false),
           botonCalendario('Seleccione la fecha de pago', _datePagoTendencia, vehiculoModel.fechaPagoTenencia, _fechaPagoTenenciaController)
         ],
@@ -272,7 +284,9 @@ class _RegisterExtraPageState extends State<RegisterExtraPage> {
             placa: _placaController.text, 
             seguro: _numeroPolizaSeguroController.text, 
             telefonoSeguro: _telefonoSeguroController.text, 
-            vencimientoVerificacio: _vencimientoVerificacioController.text
+            vencimientoVerificacio: _vencimientoVerificacioController.text,
+            vencimientoTarjetaCirculacion: _vencimientoTarjetaCirculacionController.text,
+            ultimaFechaDeServicio: _ultimaFechaDeServicioController.text
           );
           if (widget.isNew) {//Ingreso
             bandera = await vehiculoService.crearVehiculo(vehiculo);

@@ -223,7 +223,7 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           MaterialButton(
-            child: Text("Olvide mi contraseña",
+            child: Text("Olvidé mi contraseña",
                 style: Theme.of(context)
                     .textTheme
                     .caption
@@ -276,7 +276,7 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "¿Aun no tienes cuenta?",
+              "¿Aún no tienes cuenta?",
               style: Theme.of(context)
                   .textTheme
                   .subtitle1

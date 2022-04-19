@@ -7,6 +7,7 @@ import 'package:places_app/models/usuario_model.dart';
 import 'package:places_app/pages/afiliados/registro_afiliacion.dart';
 import 'package:places_app/pages/register_extra_page.dart';
 import 'package:places_app/providers/push_notification_provider.dart';
+import 'package:places_app/routes/constantes.dart';
 import 'package:places_app/shared/user_preferences.dart';
 
 import '../const/const.dart';
@@ -75,7 +76,8 @@ class _RegisterPageState extends State<RegisterPage> {
             await usuario.save(_emailController.text);
             preferences.email = _emailController.text.toLowerCase();
             preferences.tipoUsuario = "afiliado";
-            Navigator.push(context,MaterialPageRoute(builder: (context) => RegistroAfiliacion()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => RegistroAfiliacion()));
           } else {
             Usuario usuario = new Usuario(
                 tipoUsuario: "normal",
@@ -91,12 +93,15 @@ class _RegisterPageState extends State<RegisterPage> {
             await usuario.save(_emailController.text);
             preferences.email = _emailController.text.toLowerCase();
             preferences.tipoUsuario = "normal";
-            success(context, "Registro de Usuario", "Su registro ha sido exitoso",false,
-                f: () {
-              Navigator.push(context,MaterialPageRoute(builder: (context) => RegisterExtraPage(_emailController.text,true)));
+            success(context, "Registro de Usuario",
+                "Su registro ha sido exitoso", false, f: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          RegisterExtraPage(_emailController.text, true)));
             });
           }
-          
         }
       }
     } catch (e) {
@@ -347,8 +352,7 @@ class _RegisterPageState extends State<RegisterPage> {
           children: <Widget>[
             MaterialButton(
               onPressed: () {
-                Navigator.of(context)
-                    .popUntil(ModalRoute.withName("login"));
+                Navigator.pushReplacementNamed(context, loginRoute);
               },
               child: Text(
                 "Iniciar Sesión",
@@ -366,7 +370,9 @@ class _RegisterPageState extends State<RegisterPage> {
               });
             },
             child: Text(
-              !isAfiliado ? "Registrarse como afiliado" : "Registro normal",
+              !isAfiliado
+                  ? "Registrarse como proveedor"
+                  : "Registrarse como cliente",
               style: Theme.of(context).textTheme.subtitle1.copyWith(
                     color: kBaseColor,
                     decoration: TextDecoration.underline,
@@ -390,16 +396,24 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                     
                     logo,
                     !isAfiliado
-                        ? Text(
-                            "Registro de usuario",
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
+                        ? Column(
+                          children: [
+                            Text(
+                                "Registro de usuario",
+                                style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                
+                              ),
+                              leyendaterminos()
+                          ],
+                        )
+                          
                         : Column(
                             children: [
                               Text(
@@ -412,13 +426,14 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                               SizedBox(height: 10.0),
                               Text(
-                                "Registro de usuario afiliado",
+                                "Registro de usuario proveedor",
                                 style: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
+                              leyendaterminos()
                             ],
                           ),
                     fields,
@@ -428,6 +443,31 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget leyendaterminos() {
+    return Container(
+      width: 500,
+      margin: EdgeInsets.only(top: 5),
+      decoration: BoxDecoration(
+          color: kBaseColor,
+          borderRadius: BorderRadius.all(Radius.circular(10))),
+      child: Padding(
+        padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: [
+              Center(
+                  child: Text(
+                "Al registrarse esta aceptando los términos y condiciones.",
+                style: TextStyle(color: Colors.white),
+                textAlign: TextAlign.center,
+              )),
+            ],
+          ),
         ),
       ),
     );

@@ -29,6 +29,7 @@ class Afiliado {
     this.latitud,
     this.longitud,
     this.ubicacion,
+    this.descripcion
   });
 
   String id;
@@ -46,6 +47,7 @@ class Afiliado {
   double latitud;
   double longitud;
   String ubicacion;
+  String descripcion;
 
   static Api api = new Api('afiliados');
 
@@ -65,6 +67,7 @@ class Afiliado {
         latitud: double.parse(json["latitud"].toString()) ,
         longitud: double.parse(json["longitud"].toString()),
         ubicacion: json["ubicacion"],
+        descripcion: json["descripcion"]
       );
 
   factory Afiliado.fromMap(Map<String, dynamic> json, String id) => Afiliado(
@@ -83,6 +86,7 @@ class Afiliado {
         latitud: double.parse(json["latitud"].toString()) ,
         longitud: double.parse(json["longitud"].toString()),
         ubicacion: json["ubicacion"],
+        descripcion: json["descripcion"]
       );
   Map<String, dynamic> toJson() => {
         "id": id,
@@ -100,6 +104,7 @@ class Afiliado {
         "latitud": latitud,
         "longitud": longitud,
         "ubicacion": ubicacion,
+        "descripcion": descripcion,
       };
 
   static Future<Afiliado> getById(String id) async {
