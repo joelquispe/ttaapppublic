@@ -100,6 +100,13 @@ class _RegisterExtraPageState extends State<RegisterExtraPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  Align(
+                    alignment: Alignment.topLeft,
+                                      child: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: (){
+                      Navigator.of(context)
+                      .pushNamedAndRemoveUntil('/', (route) => false);
+                    }),
+                  ),
                   logo(),
                   titulo(),
                   campos(),

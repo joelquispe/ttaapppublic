@@ -462,7 +462,7 @@ class _RegisterPageState extends State<RegisterPage> {
             children: [
               Center(
                   child: Text(
-                "Al registrarse esta aceptando los términos y condiciones.",
+                "Al registrarse está aceptando los términos y condiciones.",
                 style: TextStyle(color: Colors.white),
                 textAlign: TextAlign.center,
               )),

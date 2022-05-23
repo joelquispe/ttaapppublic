@@ -40,6 +40,7 @@ class _HomePageState extends State<HomePage> {
 
   void initData() async {
     this.anuncios = await Anuncio.fetchData();
+   
     print(anuncios);
     setState(() {
       isLoading = false;
@@ -142,9 +143,11 @@ class _HomePageState extends State<HomePage> {
         itemBuilder: (BuildContext context, int index) {
           return Stack(
             children: [
-              new Image.network(
-                anuncios[index].imagen,
-                fit: BoxFit.fill,
+              Center(
+                child: new Image.network(
+                  anuncios[index].imagen,
+                  fit: BoxFit.cover,
+                ),
               ),
               Column(
                 children: [

@@ -10,8 +10,8 @@ class TutorialPage extends StatefulWidget {
 }
 
 class _TutorialPageState extends State<TutorialPage> {
-List<Tutorial> tutorial = [];
- bool isLoading = true;
+  List<Tutorial> tutorial = [];
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -21,6 +21,7 @@ List<Tutorial> tutorial = [];
 
   void initData() async {
     this.tutorial = await Tutorial.fetchData();
+    this.tutorial.sort((a, b) => a.numeroSlide.compareTo(b.numeroSlide));
     print("tutorial");
     print(tutorial);
     setState(() {
@@ -30,34 +31,28 @@ List<Tutorial> tutorial = [];
 
   @override
   Widget build(BuildContext context) {
-    
     if (isLoading) {
-      return Stack(
-        children: [
-           Container(
-              width: double.infinity,
-              height: double.infinity,
-              color: Colors.white,
-              child: Center(
-                child: Container(
-                  width: 150,
-                  height: 150,
-                  child: Image(
-                        image: AssetImage('assets/images/logo.png'),
-                        
-                      ),
-                ),
+      return Stack(children: [
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          color: Colors.white,
+          child: Center(
+            child: Container(
+              width: 150,
+              height: 150,
+              child: Image(
+                image: AssetImage('assets/images/logo.png'),
               ),
-
-            
+            ),
           ),
-          Center(child: CircularProgressIndicator())]);
-        
+        ),
+        Center(child: CircularProgressIndicator())
+      ]);
     }
 
     return Scaffold(
-      
-      body: SwiperTutorial(listaTutorial:tutorial),
+      body: SwiperTutorial(listaTutorial: tutorial),
     );
   }
 }

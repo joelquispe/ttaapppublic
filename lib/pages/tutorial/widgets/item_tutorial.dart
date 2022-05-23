@@ -3,15 +3,15 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:places_app/const/const.dart';
 
-
 class ItemTutorial extends StatefulWidget {
   final String title;
   final String message;
   final String img;
- 
- final Function onPressed;
 
-  const ItemTutorial({Key key, this.title = "", this.message,  this.onPressed,this.img})
+  final Function onPressed;
+
+  const ItemTutorial(
+      {Key key, this.title = "", this.message, this.onPressed, this.img})
       : super(key: key);
 
   @override
@@ -21,8 +21,8 @@ class ItemTutorial extends StatefulWidget {
 class _ItemTutorialState extends State<ItemTutorial> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height*0.8;
-    double width = MediaQuery.of(context).size.width*0.8;
+    double height = MediaQuery.of(context).size.height * 0.8;
+    double width = MediaQuery.of(context).size.width * 0.8;
     return Container(
       width: width,
       height: height,
@@ -42,33 +42,37 @@ class _ItemTutorialState extends State<ItemTutorial> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 15, left: 15),
                 child: ListView(
-                   physics: BouncingScrollPhysics(),
-                  
+                  physics: BouncingScrollPhysics(),
                   children: [
                     //Expanded(child: Container()),
                     const SizedBox(height: 10.0),
                     _buildLogo(),
                     const SizedBox(height: 10.0),
-                    Text(this.widget.title.toUpperCase(),style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.white),textAlign: TextAlign.center,),
+                    Text(
+                      this.widget.title.toUpperCase(),
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
                     const SizedBox(height: 5.0),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         child: Center(
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center ,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Expanded(
                                   child: Center(
-                                    child: Text(
-                                      
-                                this.widget.message,
-                                textAlign:TextAlign.center,
-                                style: TextStyle(
-                                  
+                                child: Text(
+                                  this.widget.message == null ? "":this.widget.message,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
                                       fontSize: 17, color: Colors.white),
-                              ),
-                                  ))
+                                ),
+                              ))
                             ],
                           ),
                         ),
@@ -83,14 +87,12 @@ class _ItemTutorialState extends State<ItemTutorial> {
                       ),
                     ),
                     Expanded(child: Container()),
-                    
-            const SizedBox(height: 20.0),
+
+                    const SizedBox(height: 20.0),
                   ],
                 ),
               ),
             ),
-           
-            
           ],
         ),
       ),
@@ -98,9 +100,8 @@ class _ItemTutorialState extends State<ItemTutorial> {
   }
 
   Widget _buildLogo() {
-
     return Padding(
-      padding: const EdgeInsets.only(top: 1,right: 15),
+      padding: const EdgeInsets.only(top: 1, right: 15),
       child: Align(
         alignment: Alignment.center,
         child: Column(
@@ -108,13 +109,12 @@ class _ItemTutorialState extends State<ItemTutorial> {
             Container(
                 width: 250,
                 height: 250,
-                child:FadeInImage( 
-        image: NetworkImage(widget.img),
-        placeholder: AssetImage('assets/images/logo.png'),
-        fit: BoxFit.contain,
-        //width: double.infinity,
-        )
-                ),
+                child: FadeInImage(
+                  image: NetworkImage(widget.img),
+                  placeholder: AssetImage('assets/images/logo.png'),
+                  fit: BoxFit.contain,
+                  //width: double.infinity,
+                )),
           ],
         ),
       ),
