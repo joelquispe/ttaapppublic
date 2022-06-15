@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places_app/pages/tutorial/avisos_privacidad.dart';
 import 'package:places_app/routes/arguments/lista_vehiculos_args.dart';
 import 'package:places_app/routes/arguments/quetepaso_args.dart';
 import 'package:places_app/routes/arguments/register_extra_args.dart';
@@ -57,6 +58,9 @@ class RouteGenerator{
       
       case terminosCondicionesRoute:
         return MaterialPageRoute(builder: (_)=> TerminosCondiciones());
+
+      case avisosCondicionesRoute:
+        return MaterialPageRoute(builder: (_)=> AvisosPrivacidad());
 
       case listaVehiculosRoute:
         if (args is ListaVehiculosArgs) {

@@ -8,4 +8,5 @@ const registroAfilicacionRoute = "registroAfiliacion";
 const resetPasswordRoute = "resetPassword";
 const queTePasoRoute = "queTePaso";
 const terminosCondicionesRoute = "terminosCondiciones";
+const avisosCondicionesRoute = "avisosprivacidad";
 const listaVehiculosRoute = "listaVehiculos";

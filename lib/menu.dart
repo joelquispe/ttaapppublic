@@ -86,6 +86,13 @@ class _MenuBarState extends State<MenuBar> {
                         Navigator.pushNamed(context, terminosCondicionesRoute)
                       },
                     ),
+                    ListTile(
+                      leading: const Icon(Icons.privacy_tip, size: 20),
+                      title: Text("Avisos de privacidad"),
+                      onTap: () => {
+                        Navigator.pushNamed(context, terminosCondicionesRoute)
+                      },
+                    ),
                     SizedBox(height: 10),
                     _authWidget(),
                     SizedBox(height: 54),

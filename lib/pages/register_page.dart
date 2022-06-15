@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 
 import 'package:flutter/material.dart';
 import 'package:places_app/components/blur_container.dart';
@@ -6,6 +7,8 @@ import 'package:places_app/helpers/alerts_helper.dart';
 import 'package:places_app/models/usuario_model.dart';
 import 'package:places_app/pages/afiliados/registro_afiliacion.dart';
 import 'package:places_app/pages/register_extra_page.dart';
+import 'package:places_app/pages/tutorial/avisos_privacidad.dart';
+import 'package:places_app/pages/tutorial/terminos_condiciones.dart';
 import 'package:places_app/providers/push_notification_provider.dart';
 import 'package:places_app/routes/constantes.dart';
 import 'package:places_app/shared/user_preferences.dart';
@@ -186,7 +189,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 borderSide: BorderSide(
               color: Colors.red,
             )),
-            hintText: "Ingrese su apellido materno",
+            hintText: "Ingrese sus apellidos",
             labelText: "Apellido Materno",
             hintStyle: TextStyle(color: kBaseColor)),
         validator: (String value) {
@@ -461,11 +464,34 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Column(
             children: [
               Center(
-                  child: Text(
-                "Al registrarse está aceptando los términos y condiciones.",
-                style: TextStyle(color: Colors.white),
-                textAlign: TextAlign.center,
-              )),
+                //   child: Text(
+                // "Al registrarse está aceptando los términos y condiciones y avisos de privacidad.",
+                // style: TextStyle(color: Colors.white),
+                // textAlign: TextAlign.center,
+                child: RichText(
+                  text:TextSpan(children: [
+                  TextSpan(
+                    text: "Al registrarse está aceptando los ",
+                    style: TextStyle(color: Colors.white)
+                  ),
+                  TextSpan(
+                    text:"términos y condiciones",
+                    style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),
+                    recognizer: new TapGestureRecognizer()..onTap = ()=>
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=> TerminosCondiciones()))
+                  ),
+                  TextSpan(
+                    text: " y ",
+                     style: TextStyle(color: Colors.white),
+                  ),
+                  TextSpan(
+                    text: "aviso de privacidad",
+                    style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),
+                    recognizer: new TapGestureRecognizer()..onTap = ()=> 
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=> AvisosPrivacidad()))
+                  )
+                ])),
+              ),
             ],
           ),
         ),

@@ -34,7 +34,7 @@ class _ItemTutorialState extends State<ItemTutorial> {
               width: width,
               height: height,
               decoration: BoxDecoration(
-                color: Color(0xFFBF0811).withOpacity(0.7),
+                // image: DecorationImage(image:NetworkImage(widget.img),fit: BoxFit.cover),
                 borderRadius: BorderRadius.all(
                   Radius.circular(10),
                 ),
@@ -107,8 +107,8 @@ class _ItemTutorialState extends State<ItemTutorial> {
         child: Column(
           children: [
             Container(
-                width: 250,
-                height: 250,
+                width: 450,
+                height: 450,
                 child: FadeInImage(
                   image: NetworkImage(widget.img),
                   placeholder: AssetImage('assets/images/logo.png'),
