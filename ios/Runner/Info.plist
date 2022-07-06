@@ -3,11 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-    <string>Your location is required for xyz benefits for you</string>
+    <string>We ask permission from the gps so that you can select your address for the records that is required</string>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Your location is required for xyz benefits for you</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>...</string>
+    <string>We ask permission from the gps so that you can select your address for the records that is required</string>
 	<key>NSContactsUsageDescription</key>
 	<string>...</string>
 	<key>NSCalendarsUsageDescription</key>
@@ -29,7 +27,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>places_app</string>
+	<string>Tu Taller Automotriz</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

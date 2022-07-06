@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -100,7 +98,8 @@ class _LoginPageState extends State<LoginPage> {
             tokenPush: tokenPush);
         await userExtraData.save(user.email);
         setSubmitting(false);
-        Navigator.pushNamed(context, registerExtraRoute,arguments: RegisterExtraArgs(user.email, true));
+        Navigator.pushNamed(context, registerExtraRoute,
+            arguments: RegisterExtraArgs(user.email, true));
         // Navigator.push(
         //     context,
         //     MaterialPageRoute(
@@ -130,29 +129,29 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  void handleLoginWithGoogle() async {
+  /*void handleLoginWithGoogle() async {
     
     User user = await GoogleSignInService.signInWithGoogle();
     await handleGoHome(user: user);
-  }
+  }*/
 
   void _openLoadingDialog(BuildContext context) {
-  showDialog(
-    barrierDismissible: false,
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        content: CircularProgressIndicator(),
-      );
-    },
-  );
-}
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: CircularProgressIndicator(),
+        );
+      },
+    );
+  }
 
-  void handleLoginWithFacebook() async {
+  /*void handleLoginWithFacebook() async {
     UserCredential user = await FacebookSignInService.signInWithFacebook();
     await handleGoHome(userCredential: user);
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
@@ -257,12 +256,12 @@ class _LoginPageState extends State<LoginPage> {
           onPressed: handleLoginEmailPassword,
         ));
 
-    final googleLoginButton = FloatingActionButton(
+    /*final googleLoginButton = FloatingActionButton(
       heroTag: "fb",
       backgroundColor: kBaseColor,
       child: Icon(FontAwesomeIcons.google, color: Colors.white),
       onPressed: handleLoginWithGoogle,
-    );
+    );*/
 
     final bottom = Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -289,8 +288,7 @@ class _LoginPageState extends State<LoginPage> {
           children: <Widget>[
             MaterialButton(
               onPressed: () {
-                Navigator.of(context)
-                    .pushNamed('register');
+                Navigator.of(context).pushNamed('register');
               },
               child: Text(
                 "Registrarse",
@@ -316,7 +314,7 @@ class _LoginPageState extends State<LoginPage> {
             )
           ],
         ),
-        Row(
+        /*Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             googleLoginButton,
@@ -326,7 +324,7 @@ class _LoginPageState extends State<LoginPage> {
                   .subtitle1
                   .copyWith(color: Colors.black),)
           ],
-        )
+        )*/
       ],
     );
 
